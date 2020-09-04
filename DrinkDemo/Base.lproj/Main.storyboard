@@ -11,7 +11,7 @@
         <!--飲料選單-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MenuTableViewController" customModule="DrinkDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DrinkTableViewController" customModule="DrinkDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +117,7 @@
                                             <outlet property="lPriceLabel" destination="crb-Kd-cLG" id="nAw-9C-hH1"/>
                                             <outlet property="mPriceLabel" destination="QVG-N9-0jZ" id="S8k-8Z-np7"/>
                                             <outlet property="nameLabel" destination="fUc-MA-Ba7" id="zQo-B1-bTi"/>
-                                            <segue destination="q4r-SS-YcR" kind="show" id="ZGH-ED-d3Q"/>
+                                            <segue destination="q4r-SS-YcR" kind="show" id="n2F-Mw-9bR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -134,7 +134,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="飲料選單" id="445-Ug-xD5"/>
                     <connections>
-                        <outlet property="tableView" destination="7Kq-aD-UWf" id="FsQ-sA-Bzr"/>
+                        <outlet property="tableView" destination="7Kq-aD-UWf" id="W86-Gh-67S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -428,7 +428,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ozH-eQ-bv2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" id="ozH-eQ-bv2">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ozH-eQ-bv2" id="JWD-MA-lfj">

@@ -22,4 +22,3 @@ struct Order: Codable {
 struct OrderData: Codable {
     var data: Order
 }
-

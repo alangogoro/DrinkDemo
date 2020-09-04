@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuTableViewController: UIViewController {
+class DrinkTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,11 +23,11 @@ class MenuTableViewController: UIViewController {
         tableView.dataSource = self
         
         // 測試能否印出每一種飲料
-        MenuController.shared.fetchDrinkList { (drinks) in
+        DrinkHelper.shared.fetchDrinkList { drinks in
             if let drinks = drinks {
                 self.drinks = drinks
             } else {
-                print("沒有取得飲料列表")
+                print("未能取得飲料列表")
             }
             /* $0?.forEach({ (drink) in
                 self.drinklist.append(drink)
@@ -39,10 +39,11 @@ class MenuTableViewController: UIViewController {
 }
 
 
-extension MenuTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension DrinkTableViewController: UITableViewDelegate,
+                                    UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,11 +69,9 @@ extension MenuTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if let controller = segue.destination as? OrderViewController,
            let row = tableView.indexPathForSelectedRow?.row {
             controller.drink = drinks[row]
         }
-        
     }
 }

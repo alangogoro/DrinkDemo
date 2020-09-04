@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct MenuController {
-    static let shared = MenuController()
+struct DrinkHelper {
+    static let shared = DrinkHelper()
     
     func fetchDrinkList(completion: @escaping ([Drink]?) -> ()) {
         

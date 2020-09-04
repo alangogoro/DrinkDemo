@@ -31,7 +31,7 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
         nameTextField.delegate  = self
         drinkTextField.delegate = self
         
-        MenuController.shared.fetchDrinkList { (drinks) in
+        DrinkHelper.shared.fetchDrinkList { drinks in
             guard drinks != nil else {
                 return
             }
