@@ -31,6 +31,47 @@ struct Common {
         viewController.present(alertController, animated: true)
     }
     
+    /** 初始化 AcitivtyIndicatorView */
+    func setIndicator(in viewController: UIViewController,
+                      with activityIndicator: UIActivityIndicatorView)
+    -> UIActivityIndicatorView {
+        let view = viewController.view!
+        let frame = CGRect(origin: .zero, size: viewController.view.frame.size)
+        activityIndicator.frame = frame
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                               constant: 0).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                                  constant: 0).isActive = true
+        activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                   constant: 0).isActive = true
+        activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                    constant: 0).isActive = true
+        
+        activityIndicator.startAnimating()
+        
+        activityIndicator.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        activityIndicator.color = UIColor.systemGray
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.alpha = 1
+        return activityIndicator
+    }
+    func displayActivityIndicator(_ activityIndicator: UIActivityIndicatorView,
+                                  isActive: Bool) {
+        DispatchQueue.main.async {
+            if isActive {
+                activityIndicator.startAnimating()
+            } else {
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     /* ========== 文字輸入視窗 function ========== */
     func showInputAlertController(in viewController: UIViewController,
                        withTitle title: String,

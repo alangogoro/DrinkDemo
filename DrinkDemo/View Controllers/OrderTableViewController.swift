@@ -8,24 +8,40 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
-        
+    
+    var isLoading: Bool?
+    var activityIndicator = UIActivityIndicatorView()
+    
     var orders: [Order] = [Order]()
     
     private let reuseIdentifier = "orderCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    /* 在 viewDidLayoutSubviews() 中，元件的位置大小才是確定 */
+    override func viewDidLayoutSubviews() {
+        activityIndicator = Common.shared.setIndicator(in: self, with: activityIndicator)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        isLoading = true
+        Common.shared.displayActivityIndicator(activityIndicator, isActive: isLoading!)
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if orders.count == 0 {
+            return 1
+        }
+        return orders.count
     }
     /* ========== TableView 的 footer ========== */
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -34,15 +50,22 @@ class OrderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0
     }
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+                as? OrderTableViewCell else { return UITableViewCell() }
+        if orders.count == 0 { /*
+            cell.imageView.image = UIImage(systemName: "cloud")
+            cell.groupNameLabel.text = "尚無訂購紀錄"
+            cell.accessoryType = .none
+            cell.selectionStyle = .none */
+        } else {
+            /* let order = orders[indexPath.row]
+            cell.update(with: order) */
+        }
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
