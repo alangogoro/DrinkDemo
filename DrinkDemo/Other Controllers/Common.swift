@@ -35,8 +35,9 @@ struct Common {
     func setIndicator(in viewController: UIViewController,
                       with activityIndicator: UIActivityIndicatorView)
     -> UIActivityIndicatorView {
+        
         let view = viewController.view!
-        let frame = CGRect(origin: .zero, size: viewController.view.frame.size)
+        let frame = CGRect(origin: .zero, size: viewController.view.safeAreaLayoutGuide.layoutFrame.size)
         activityIndicator.frame = frame
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -50,16 +51,16 @@ struct Common {
                                                    constant: 0).isActive = true
         activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                     constant: 0).isActive = true
-        
-        activityIndicator.startAnimating()
-        
+                
         activityIndicator.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         activityIndicator.color = UIColor.systemGray
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.alpha = 1
+        
         return activityIndicator
+        
     }
     func displayActivityIndicator(_ activityIndicator: UIActivityIndicatorView,
                                   isActive: Bool) {
@@ -108,4 +109,20 @@ struct Common {
         viewController.present(controller, animated: true, completion: nil)
     }
     
+    /**
+     取得現在日期的字串
+     */
+    func dateString() -> String {
+        let time = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy-MM-dd HH:mm"
+        
+        let dateStr = formatter.string(from: time)
+        return dateStr
+    }
+
+}
+
+struct PropertyKeys {
+    static let orderController = "OrderViewController"
 }

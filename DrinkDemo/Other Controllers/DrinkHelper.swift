@@ -26,4 +26,12 @@ struct DrinkHelper {
         }
         
     }
+    
+    func sumToal(orders: [Order]) -> Int {
+        var total = 0
+        orders.forEach { order in
+            total += Int(order.price)!
+        }
+        return total
+    }
 }

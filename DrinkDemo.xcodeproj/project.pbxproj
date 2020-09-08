@@ -18,6 +18,7 @@
 		CE292BE924F66C810064419C /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE292BE824F66C810064419C /* DrinkTableViewCell.swift */; };
 		CE292BEF24F739CB0064419C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE292BEE24F739CB0064419C /* OrderViewController.swift */; };
 		CE292BF124F746300064419C /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE292BF024F746300064419C /* Order.swift */; };
+		CE36D8362507BFE6004CDD41 /* FooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D8352507BFE6004CDD41 /* FooterTableViewCell.swift */; };
 		CE5A27102502178900FF0439 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A270F2502178900FF0439 /* OrderTableViewController.swift */; };
 		CE5A271225022B4C00FF0439 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A271125022B4C00FF0439 /* OrderTableViewCell.swift */; };
 		CEC48E2B24F84777005AE2AE /* DrinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC48E2A24F84777005AE2AE /* DrinkHelper.swift */; };
@@ -39,6 +40,7 @@
 		CE292BE824F66C810064419C /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		CE292BEE24F739CB0064419C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		CE292BF024F746300064419C /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Order.swift; path = DrinkDemo/Model/Order.swift; sourceTree = SOURCE_ROOT; };
+		CE36D8352507BFE6004CDD41 /* FooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterTableViewCell.swift; sourceTree = "<group>"; };
 		CE5A270F2502178900FF0439 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		CE5A271125022B4C00FF0439 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		CEC48E2A24F84777005AE2AE /* DrinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkHelper.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				CE292BE824F66C810064419C /* DrinkTableViewCell.swift */,
 				CE5A271125022B4C00FF0439 /* OrderTableViewCell.swift */,
+				CE36D8352507BFE6004CDD41 /* FooterTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				CE03AE9C24ED90A10010B742 /* AppDelegate.swift in Sources */,
 				CE03AE9E24ED90A10010B742 /* SceneDelegate.swift in Sources */,
 				CE5A271225022B4C00FF0439 /* OrderTableViewCell.swift in Sources */,
+				CE36D8362507BFE6004CDD41 /* FooterTableViewCell.swift in Sources */,
 				CE292BE924F66C810064419C /* DrinkTableViewCell.swift in Sources */,
 				CE292BEF24F739CB0064419C /* OrderViewController.swift in Sources */,
 				CEEF155D250105BB001714D4 /* Common.swift in Sources */,

@@ -34,7 +34,7 @@ class DrinkTableViewController: UIViewController {
                 //print("\(drink.id)\t\(drink.name) \(drink.options[0].size) \(drink.options[0].price)\t\(drink.options[1].size) \(drink.options[1].price)")
             }) */
         }
-        
+        print(Common.shared.dateString())
     }
 }
 
@@ -65,7 +65,9 @@ extension DrinkTableViewController: UITableViewDelegate,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         drinks.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        DispatchQueue.main.async {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

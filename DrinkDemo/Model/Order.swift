@@ -9,13 +9,14 @@ import Foundation
 
 struct Order: Codable {
     
-    var name: String
+    var name:    String
     var drinkId: String
-    var drink: String
-    var size: String
+    var drink:   String
+    var size:    String
     var sweetnessLevel: String
     var iceAmount: String
-    var price: Int
+    var price:     String
+    var date:      String?
     
 }
 

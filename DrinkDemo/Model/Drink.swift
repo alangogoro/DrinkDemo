@@ -22,7 +22,6 @@ struct Option: Codable {
 enum DrinkCategory: String, Codable {
     case 原茶類, 奶茶類, 鮮奶類, 水果類
 }
-
 enum SweetnessLevel: String, CaseIterable {
     case regular = "正常"
     case less    = "少糖"

@@ -45,12 +45,12 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func setViews() {
-        drinkTextField.text = drink.name
+        drinkTextField.text = drink!.name
         imageView.image = UIImage(named: drink.id)
         // Other views...
     }
     
-    /** 送出訂單並視結果換頁 */
+    /* ========== 送出訂單並視結果換頁 ========== */
     @IBAction func submitOrder(_ sender: Any) {
         
         guard nameTextField.text != "" else {
@@ -62,20 +62,29 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
             return
         }
         
-        let name = nameTextField.text
+        let name = nameTextField.text!
         let drinkId = drink.id
-        let drinkName = drinkTextField.text
+        let drinkName = drinkTextField.text!
         let size = sizes[sizeSegmentedControl.selectedSegmentIndex]
         /* enum 遵從 CaseIterable protocol
          * 可以使用 .allCases 取得 Array */
         let sweetnessLevel = SweetnessLevel.allCases[sugarSegmentedControl.selectedSegmentIndex].rawValue
         /* 用 UISegmentedControl.titleForSegment 取得區段標題 */
-        let iceAmount = iceSegmentedControl.titleForSegment(at: iceSegmentedControl.selectedSegmentIndex)
+        let iceAmount = iceSegmentedControl.titleForSegment(at: iceSegmentedControl.selectedSegmentIndex)!
         let price = drink.options[sizeSegmentedControl.selectedSegmentIndex].price
+        let date = Common.shared.dateString()
         
-        let order = Order(name: name!, drinkId: drinkId, drink: drinkName!, size: size, sweetnessLevel: sweetnessLevel, iceAmount: iceAmount!, price: price)
+        let order = Order(name:  name,
+                          drinkId: drinkId,
+                          drink: drinkName,
+                          size:  size,
+                          sweetnessLevel: sweetnessLevel,
+                          iceAmount: iceAmount,
+                          // 因為使用 JSON 解碼時只能得出字串，所以在這裡也把 Int 轉為 String
+                          price: String(price),
+                          date:  date)
         let orderData = OrderData(data: order)
-        NetworkController.shared.submitOrder(with: orderData) { [self] (result) in
+        NetworkController.shared.submitOrder(with: orderData) { [self] result in
             if result == true {
                 DispatchQueue.main.async {
                     /* 顯示確認視窗 Alert 並透過
