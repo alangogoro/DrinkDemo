@@ -33,7 +33,8 @@ class FooterTableViewCell: UITableViewCell {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "zh_TW")
         
-        formatter.numberStyle = .currency
+        formatter.numberStyle = .currencyISOCode //TWD1,234.00
+        formatter.maximumFractionDigits = 0      //顯示小數點後第0位，即去掉小數點
         let str = formatter.string(from: nsNumber) ?? ""
         
         return str

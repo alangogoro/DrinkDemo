@@ -114,6 +114,7 @@ struct NetworkController {
         
         let url_str = Self.API_str
         let deleteUrl_str = "\(url_str)/name/\(order.name)"
+        
         if let urlStr = deleteUrl_str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
            let url = URL(string: urlStr) {
             
@@ -126,18 +127,20 @@ struct NetworkController {
                 if error != nil {
                     print("Error = \(error!.localizedDescription)")
                 }
-                let decoder = JSONDecoder()
-                if let returnData = returnData,
-                   let dic = try? decoder.decode([String: Int].self, from: returnData) {
-                    
-                    if dic["deleted"] != nil {
-                        print("Delete Successfully")
-                        completionHanlder(true)
-                    } else {
-                        print("Delete Failed")
-                        completionHanlder(false)
+                if let returnData = returnData {
+                    do {
+                        let decoder = JSONDecoder()
+                        let dic = try decoder.decode([String: Int].self, from: returnData)
+                        if dic["deleted"] != nil {
+                            print("刪除訂單成功")
+                            completionHanlder(true)
+                        } else {
+                            print("刪除訂單失敗")
+                            completionHanlder(false)
+                        }
+                    } catch {
+                        print(error)
                     }
-                    
                 }
             }
             task.resume()

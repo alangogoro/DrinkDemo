@@ -48,12 +48,12 @@ class OrderTableViewController: UITableViewController {
             self.orders = orders!
             
             DispatchQueue.main.async {
-                tableView.reloadData()
+                self.tableView.reloadData()
                 /* 停止載入指標 */
-                isLoading = false
-                Common.shared.displayActivityIndicator(activityIndicator, isActive: isLoading)
+                self.isLoading = false
+                Common.shared.displayActivityIndicator(self.activityIndicator, isActive: self.isLoading)
                 /* 停止下拉更新 */
-                refreshControl?.endRefreshing()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
@@ -71,7 +71,7 @@ class OrderTableViewController: UITableViewController {
         }
         return orders.count
     }
-    /* ========== TableView 的 footer ========== */
+    /* ========== TableView 的 footer🦶🏻 ========== */
     override func tableView(_ tableView: UITableView,
                             viewForFooterInSection section: Int) -> UIView? {
         
@@ -115,16 +115,89 @@ class OrderTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /* let order = orders[indexPath.row]
+        
         if let controller = storyboard?.instantiateViewController(identifier: PropertyKeys.orderController) as? OrderViewController {
             
-            /* 呈現 ViewController：present ↔️ dismiss
-             * 此處測試可以成功換頁，於5秒後退回首頁 */
-            present(controller, animated: true) {
+            // 呈現 ViewController：present ↔️ dismiss
+            // 此處測試可以成功換頁，於5秒後退回前頁
+            /* present(controller, animated: true) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     controller.dismiss(animated: true)
                 }
-            }
+            }*/
         }
+         */
+    }
+    /**
+     定義滑動 Cell 尾部的行為
+     */
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let row   = indexPath.row
+        let order = orders[row]
+        
+        // 設定 update action 按鈕內容
+        let updateAction = UIContextualAction(style: .normal, title: "編輯") { [self] (action, view, completionHandler) in
+            
+            Common.shared.showInputAlertController(in: self, withTitle: "修改訂購人", withPlaceholders: [order.name]) { (confirm, inputs) in
+                guard let inputs = inputs else { return }
+                let name = inputs[0]
+                
+                if confirm { // 若確認要修改訂單
+                    guard name != "" else {
+                        Common.shared.showAlert(in: self, with: "請輸入名字")
+                        return
+                    }
+                    var updateOrder = order
+                    updateOrder.name = name
+                    
+//                    NetworkController.shared.updateOrder(at: order) { result in
+//                        if result == true {
+                            orders[row] = updateOrder
+                            Common.shared.showAlert(in: self, with: "編輯成功")
+                            DispatchQueue.main.async {
+                                tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+                                tableView.reloadData()
+                            }
+                            completionHandler(true)
+//                        } else {
+//                            Common.shared.showAlert(in: self, with: "編輯失敗")
+//                            completionHandler(false)
+//                        }
+//                    }
+                } else {
+                    self.dismiss(animated: true)
+                }
+            }
+            
+        }
+        updateAction.backgroundColor = .systemBlue
+        
+        // 設定 delete action 按鈕內容
+        let deleteAction = UIContextualAction(style: .destructive, title: "刪除訂單") { [self] (action, view, completionHandler) in
+            
+//            NetworkController.shared.deleteOrder(at: order) { result in
+//                if result == true {
+            orders.remove(at: row)
+            DispatchQueue.main.async {
+                tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+                tableView.reloadData()
+            }
+            completionHandler(true)
+//                } else {
+//                    Common.shared.showAlert(in: self, with: "刪除失敗")
+//                    completionHandler(false)
+//                }
+//            }
+            
+        }
+        //deleteAction.backgroundColor = .red
+        let swipeAction = UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
+        // 達成一個完整的滑動時不會觸發 Action
+        swipeAction.performsFirstActionWithFullSwipe = false
+        return swipeAction
     }
     
     /**
@@ -196,5 +269,4 @@ class OrderTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
 }

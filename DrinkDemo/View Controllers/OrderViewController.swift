@@ -40,7 +40,6 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
                 self.drinkList.append(drink.name)
             })
         }
-        
         setViews()
     }
     
