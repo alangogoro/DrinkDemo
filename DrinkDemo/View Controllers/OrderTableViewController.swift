@@ -116,9 +116,12 @@ class OrderTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        /* let order = orders[indexPath.row]
+        let order = orders[indexPath.row]
         
-        if let controller = storyboard?.instantiateViewController(identifier: PropertyKeys.orderController) as? OrderViewController {
+        if let controller = storyboard?.instantiateViewController(identifier: "OrderUpdate") as? OrderUpdateViewController {
+            
+            controller.order = order
+            navigationController?.pushViewController(controller, animated: true)
             
             // 呈現 ViewController：present ↔️ dismiss
             // 此處測試可以成功換頁，於5秒後退回前頁
@@ -128,7 +131,7 @@ class OrderTableViewController: UITableViewController {
                 }
             }*/
         }
-         */
+        
     }
     /**
      定義滑動 Cell 尾部的行為

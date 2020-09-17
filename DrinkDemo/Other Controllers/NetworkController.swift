@@ -89,19 +89,22 @@ struct NetworkController {
                     if error != nil {
                         print("Error = \(error!.localizedDescription)")
                     }
-                    let decoder = JSONDecoder()
-                    if let returnData = returnData,
-                       let dic = try? decoder.decode([String: Int].self, from: returnData) {
-                        print(dic)
-                        if dic["updated"] != nil {
-                            print("Update Successfully")
-                            completionHandler(true)
-                        } else {
-                            print("Update Failed")
-                            completionHandler(false)
+                    if let returnData = returnData {
+                        do {
+                            let decoder = JSONDecoder()
+                            let dic = try decoder.decode([String: Int].self, from: returnData)
+                            if dic["updated"] != nil {
+                                print("更新訂單成功")
+                                completionHandler(true)
+                            } else {
+                                print("更新訂單失敗")
+                                completionHandler(false)
+                            }
+                        } catch {
+                            print (error)
                         }
                     }
-                    
+                                        
                 }
                 task.resume()
             }

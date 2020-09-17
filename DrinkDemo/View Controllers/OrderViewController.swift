@@ -46,7 +46,6 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
     func setViews() {
         drinkTextField.text = drink!.name
         imageView.image = UIImage(named: drink.id)
-        // Other views...
     }
     
     /* ========== 送出訂單並視結果換頁 ========== */
@@ -156,8 +155,8 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
         
         /* ⭐️ 回傳 UITableView.automaticDimension
          * 可以讓 cell 自動計算高度 ⭐️ */
-        return UITableView.automaticDimension
         
+        return UITableView.automaticDimension
     }
     /* ===== 不確定有正確在作用 =====
      * ⌨️ 點按空白處，呼叫 view.endEditing() 收起鍵盤 */
@@ -169,7 +168,7 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
 
 /* ========== UITextViewDelegate protocols ========== */
 extension OrderViewController: UITextViewDelegate {
-    /* 控制使用者點選 TextField 時，會出現鍵盤或跳出 PickerView */
+    /* 控制使用者點選 TextField 時，會出現鍵盤 ⌨️ 或跳出 PickerView */
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == nameTextField {
             nameTextField.becomeFirstResponder()

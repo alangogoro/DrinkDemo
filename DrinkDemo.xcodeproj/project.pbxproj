@@ -21,6 +21,7 @@
 		CE36D8362507BFE6004CDD41 /* FooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D8352507BFE6004CDD41 /* FooterTableViewCell.swift */; };
 		CE5A27102502178900FF0439 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A270F2502178900FF0439 /* OrderTableViewController.swift */; };
 		CE5A271225022B4C00FF0439 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A271125022B4C00FF0439 /* OrderTableViewCell.swift */; };
+		CE5CBBEF2513A382007AD8F9 /* OrderUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CBBEE2513A382007AD8F9 /* OrderUpdateViewController.swift */; };
 		CEC48E2B24F84777005AE2AE /* DrinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC48E2A24F84777005AE2AE /* DrinkHelper.swift */; };
 		CEEF155D250105BB001714D4 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF155C250105BB001714D4 /* Common.swift */; };
 		CEEF1560250137B3001714D4 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF155F250137B3001714D4 /* NetworkController.swift */; };
@@ -43,6 +44,7 @@
 		CE36D8352507BFE6004CDD41 /* FooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterTableViewCell.swift; sourceTree = "<group>"; };
 		CE5A270F2502178900FF0439 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		CE5A271125022B4C00FF0439 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		CE5CBBEE2513A382007AD8F9 /* OrderUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUpdateViewController.swift; sourceTree = "<group>"; };
 		CEC48E2A24F84777005AE2AE /* DrinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkHelper.swift; sourceTree = "<group>"; };
 		CEEF155C250105BB001714D4 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		CEEF155F250137B3001714D4 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				CE03AE9F24ED90A10010B742 /* DrinkTableViewController.swift */,
 				CE292BEE24F739CB0064419C /* OrderViewController.swift */,
 				CE5A270F2502178900FF0439 /* OrderTableViewController.swift */,
+				CE5CBBEE2513A382007AD8F9 /* OrderUpdateViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				CE292BEF24F739CB0064419C /* OrderViewController.swift in Sources */,
 				CEEF155D250105BB001714D4 /* Common.swift in Sources */,
 				CE5A27102502178900FF0439 /* OrderTableViewController.swift in Sources */,
+				CE5CBBEF2513A382007AD8F9 /* OrderUpdateViewController.swift in Sources */,
 				CE292BF124F746300064419C /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
