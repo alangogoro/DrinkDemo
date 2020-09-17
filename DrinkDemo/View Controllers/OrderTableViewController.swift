@@ -178,19 +178,21 @@ class OrderTableViewController: UITableViewController {
         // 設定 delete action 按鈕內容
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除訂單") { [self] (action, view, completionHandler) in
             
-//            NetworkController.shared.deleteOrder(at: order) { result in
-//                if result == true {
+            NetworkController.shared.deleteOrder(at: order) { result in
+                if result == true {
                     orders.remove(at: row)
                     DispatchQueue.main.async {
-                        tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+                        tableView.deleteRows(at: [IndexPath(row: row,
+                                                            section: 0)],
+                                             with: .fade)
                         tableView.reloadData()
                     }
-//                    completionHandler(true)
-//                } else {
-//                    Common.shared.showAlert(in: self, with: "刪除失敗")
-//                    completionHandler(false)
-//                }
-//            }
+                    completionHandler(true)
+                } else {
+                    Common.shared.showAlert(in: self, with: "刪除失敗")
+                    completionHandler(false)
+                }
+            }
             
         }
         let swipeAction = UISwipeActionsConfiguration(actions: [deleteAction, updateAction])

@@ -121,10 +121,10 @@ struct NetworkController {
             
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
-            /*request.setValue("application/json",
-                             forHTTPHeaderField: "Content-Type")*/
+            request.setValue("application/json",
+                             forHTTPHeaderField: "Content-Type")
             
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if error != nil {
                     print("Error = \(error!.localizedDescription)")
                 }

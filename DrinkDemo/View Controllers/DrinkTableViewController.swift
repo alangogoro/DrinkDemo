@@ -60,6 +60,11 @@ extension DrinkTableViewController: UITableViewDelegate,
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+    }
+    
     /* 滑動刪除 row */
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
