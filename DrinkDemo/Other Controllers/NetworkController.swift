@@ -83,7 +83,7 @@ struct NetworkController {
                              forHTTPHeaderField: "Content-Type")
             
             let encoder = JSONEncoder()
-            if let data = try? encoder.encode(order) {
+            if let data = try? encoder.encode(OrderData(data: order)) {
                 let task = URLSession.shared.uploadTask(with: request, from: data) { (returnData, response, error) in
                     
                     if error != nil {
@@ -92,6 +92,7 @@ struct NetworkController {
                     let decoder = JSONDecoder()
                     if let returnData = returnData,
                        let dic = try? decoder.decode([String: Int].self, from: returnData) {
+                        print(dic)
                         if dic["updated"] != nil {
                             print("Update Successfully")
                             completionHandler(true)
@@ -120,17 +121,17 @@ struct NetworkController {
             
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
-            request.setValue("application/json",
-                             forHTTPHeaderField: "Content-Type")
+            /*request.setValue("application/json",
+                             forHTTPHeaderField: "Content-Type")*/
             
-            let task = URLSession.shared.dataTask(with: url) { (returnData, response, error) in
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     print("Error = \(error!.localizedDescription)")
                 }
-                if let returnData = returnData {
+                if let data = data {
                     do {
                         let decoder = JSONDecoder()
-                        let dic = try decoder.decode([String: Int].self, from: returnData)
+                        let dic = try decoder.decode([String: Int].self, from: data)
                         if dic["deleted"] != nil {
                             print("刪除訂單成功")
                             completionHanlder(true)

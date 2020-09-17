@@ -161,7 +161,7 @@ class OrderTableViewController: UITableViewController {
                                 tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
                                 tableView.reloadData()
                             }
-                            completionHandler(true)
+//                            completionHandler(true)
 //                        } else {
 //                            Common.shared.showAlert(in: self, with: "編輯失敗")
 //                            completionHandler(false)
@@ -180,12 +180,12 @@ class OrderTableViewController: UITableViewController {
             
 //            NetworkController.shared.deleteOrder(at: order) { result in
 //                if result == true {
-            orders.remove(at: row)
-            DispatchQueue.main.async {
-                tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
-                tableView.reloadData()
-            }
-            completionHandler(true)
+                    orders.remove(at: row)
+                    DispatchQueue.main.async {
+                        tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+                        tableView.reloadData()
+                    }
+//                    completionHandler(true)
 //                } else {
 //                    Common.shared.showAlert(in: self, with: "刪除失敗")
 //                    completionHandler(false)
@@ -193,7 +193,6 @@ class OrderTableViewController: UITableViewController {
 //            }
             
         }
-        //deleteAction.backgroundColor = .red
         let swipeAction = UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
         // 達成一個完整的滑動時不會觸發 Action
         swipeAction.performsFirstActionWithFullSwipe = false
