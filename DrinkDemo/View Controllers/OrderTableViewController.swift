@@ -26,7 +26,8 @@ class OrderTableViewController: UITableViewController {
     
     /* 在 viewDidLayoutSubviews() 中，元件的位置大小才是確定 */
     override func viewDidLayoutSubviews() {
-        activityIndicator = Common.shared.setIndicator(in: self, with: activityIndicator)
+        activityIndicator = Common.shared
+            .setIndicator(in: self, with: activityIndicator)
         //print("view.frame = \(view.frame.size)")
         //print("view.safeAreaLayoutGuide = \(view.safeAreaLayoutGuide.layoutFrame.size)") // SafeArea 比較矮
     }

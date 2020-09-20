@@ -513,20 +513,29 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總金額 label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="far-jx-k3z">
                                             <rect key="frame" x="242" y="10.5" width="103" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" systemColor="systemRedColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="杯數label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81t-Bw-Ysd">
+                                            <rect key="frame" x="30" y="10.5" width="79" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="far-jx-k3z" firstAttribute="centerY" secondItem="8Ip-IS-HFu" secondAttribute="centerY" id="Abu-md-4P9"/>
-                                        <constraint firstItem="far-jx-k3z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Ip-IS-HFu" secondAttribute="leading" constant="20" symbolic="YES" id="BKS-eG-LKm"/>
+                                        <constraint firstItem="far-jx-k3z" firstAttribute="centerY" secondItem="8Ip-IS-HFu" secondAttribute="centerY" id="9S2-3u-J0k"/>
                                         <constraint firstItem="DbV-db-dXJ" firstAttribute="centerX" secondItem="8Ip-IS-HFu" secondAttribute="centerX" id="C8m-VK-oep"/>
-                                        <constraint firstAttribute="trailing" secondItem="far-jx-k3z" secondAttribute="trailing" constant="30" id="Mlx-VB-yuc"/>
+                                        <constraint firstItem="far-jx-k3z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="81t-Bw-Ysd" secondAttribute="trailing" constant="8" symbolic="YES" id="HAf-Ag-VsE"/>
+                                        <constraint firstItem="81t-Bw-Ysd" firstAttribute="centerY" secondItem="8Ip-IS-HFu" secondAttribute="centerY" id="UYn-Gc-rr6"/>
+                                        <constraint firstItem="81t-Bw-Ysd" firstAttribute="leading" secondItem="8Ip-IS-HFu" secondAttribute="leading" constant="30" id="Xs6-Ph-Y2h"/>
                                         <constraint firstItem="DbV-db-dXJ" firstAttribute="top" secondItem="8Ip-IS-HFu" secondAttribute="top" id="avK-cf-Leg"/>
                                         <constraint firstItem="DbV-db-dXJ" firstAttribute="width" secondItem="8Ip-IS-HFu" secondAttribute="width" multiplier="0.85" id="ckw-Jf-wap"/>
+                                        <constraint firstAttribute="trailing" secondItem="far-jx-k3z" secondAttribute="trailing" constant="30" id="wfZ-oo-uvE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="countLabel" destination="81t-Bw-Ysd" id="kzK-im-lql"/>
                                     <outlet property="lineView" destination="DbV-db-dXJ" id="red-Qy-ZZT"/>
                                     <outlet property="totalLabel" destination="far-jx-k3z" id="d5N-lL-ftn"/>
                                 </connections>
@@ -825,6 +834,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

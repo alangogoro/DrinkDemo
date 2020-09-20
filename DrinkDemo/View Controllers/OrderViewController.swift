@@ -19,6 +19,8 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
     var pickerTextField: UITextField!
     var pickerSelectedRow: Int!
     var drinkList = [String]() // 飲料名字的陣列
+    /* ========== ActivityIndicator ========== */
+    var activityIndicator = UIActivityIndicatorView()
     
     var drink: Drink!
     var drinks: [Drink] = [Drink]()
@@ -43,6 +45,12 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
         setViews()
     }
     
+    /* 在 viewDidLayoutSubviews() 中，元件的位置大小才是確定 */
+    override func viewDidLayoutSubviews() {
+        activityIndicator = Common.shared
+            .setIndicator(in: self, with: activityIndicator)
+    }
+    
     func setViews() {
         drinkTextField.text = drink!.name
         imageView.image = UIImage(named: drink.id)
@@ -59,6 +67,10 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
             Common.shared.showAlert(in: self, with: "請選擇飲料")
             return
         }
+        
+        // 顯示載入指標
+        Common.shared
+            .displayActivityIndicator(activityIndicator, isActive: true)
         
         let name = nameTextField.text!
         let drinkId = drink.id
@@ -85,9 +97,10 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
         NetworkController.shared.submitOrder(with: orderData) { [self] result in
             if result == true {
                 DispatchQueue.main.async {
-                    /* 顯示確認視窗 Alert 並透過
-                     * navigationController.popToRootViewController
-                     * 返回主頁 */
+                    // 停止載入指標
+                    Common.shared.displayActivityIndicator(activityIndicator, isActive: false)
+                    /* 顯示確認視窗 Alert 並且透過
+                     * navigationController.popToRootViewController 返回主頁 */
                     Common.shared.showAlertNavToRoot(in: self, with: "訂購成功")
                     /* ❌ 顯示確認視窗並返回上一頁
                      * 但是在生成 Alert 時會因爲發起換頁，所以沒有 ViewController 可以 present */
@@ -96,6 +109,7 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
                 }
             } else {
                 DispatchQueue.main.async {
+                    Common.shared.displayActivityIndicator(activityIndicator, isActive: false)
                     Common.shared.showAlert(in: self, with: "訂購失敗")
                 }
             }

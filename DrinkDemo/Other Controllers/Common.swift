@@ -39,7 +39,7 @@ struct Common {
         let view = viewController.view!
         let frame = CGRect(origin: .zero, size: viewController.view.safeAreaLayoutGuide.layoutFrame.size)
         activityIndicator.frame = frame
-        
+        // ⚠️ 使用 LayoutAnchor 一定要取消 Autoresizing
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(activityIndicator)
@@ -51,13 +51,14 @@ struct Common {
                                                    constant: 0).isActive = true
         activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                     constant: 0).isActive = true
+        // constraints 要把 .isActive 設為 true 才有作用
                 
         activityIndicator.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         activityIndicator.color = UIColor.systemGray
-        
-        activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.alpha = 1
+        
+        activityIndicator.hidesWhenStopped = true
         
         return activityIndicator
         

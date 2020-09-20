@@ -8,6 +8,7 @@
 import UIKit
 
 class FooterTableViewCell: UITableViewCell {
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     
@@ -20,8 +21,9 @@ class FooterTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = UIColor.systemGray6
         lineView.layer.cornerRadius = 2
         
+        countLabel.text = "共\(count)杯"
         let totalText = numberFormatter(intValue: amount)
-        totalLabel.text = "合計：\(count)杯 \(totalText)"
+        totalLabel.text = "\(totalText)"
     }
     
     /**

@@ -20,6 +20,9 @@ class OrderUpdateViewController: UITableViewController {
     var pickerTextField: UITextField!
     var pickerSelectedRow: Int!
     
+    /* ========== ActivityIndicator ========== */
+    var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +56,11 @@ class OrderUpdateViewController: UITableViewController {
         iceSegmentedControl.selectedSegmentIndex = getIceIndex(from: order)
     }
     
+    override func viewDidLayoutSubviews() {
+        activityIndicator = Common.shared
+            .setIndicator(in: self, with: activityIndicator)
+    }
+    
     @IBAction func submitUpdate(_ sender: Any) {
         
         guard nameTextField.text != "" else {
@@ -63,6 +71,9 @@ class OrderUpdateViewController: UITableViewController {
             Common.shared.showAlert(in: self, with: "請選擇飲料")
             return
         }
+        
+        Common.shared
+            .displayActivityIndicator(activityIndicator, isActive: true)
         
         let name = nameTextField.text!
         let drinkId = drink!.id
@@ -86,12 +97,12 @@ class OrderUpdateViewController: UITableViewController {
         NetworkController.shared.updateOrder(at: order) { [self] result in
             if result == true {
                 DispatchQueue.main.async {
+                    Common.shared.displayActivityIndicator(activityIndicator, isActive: false)
                     Common.shared.showAlertNavToRoot(in: self, with: "訂單更新成功")
-                    //self.navigationController?.popViewController(animated: true)
-                    //Common.shared.showAlert(in: self, with: "訂單更新成功")
                 }
             } else {
                 DispatchQueue.main.async {
+                    Common.shared.displayActivityIndicator(activityIndicator, isActive: false)
                     Common.shared.showAlert(in: self, with: "訂單更新失敗")
                 }
             }
