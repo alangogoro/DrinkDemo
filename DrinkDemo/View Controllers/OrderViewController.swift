@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderViewController: UITableViewController, UITextFieldDelegate {
+class OrderViewController: UITableViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var drinkTextField: UITextField!
@@ -172,7 +172,7 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
         
         return UITableView.automaticDimension
     }
-    /* ===== 不確定有正確在作用 =====
+    /* ===== 不確定有正確作用 =====
      * ⌨️ 點按空白處，呼叫 view.endEditing() 收起鍵盤 */
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
@@ -181,7 +181,7 @@ class OrderViewController: UITableViewController, UITextFieldDelegate {
 }
 
 /* ========== UITextViewDelegate protocols ========== */
-extension OrderViewController: UITextViewDelegate {
+extension OrderViewController: UITextFieldDelegate {
     /* 控制使用者點選 TextField 時，會出現鍵盤 ⌨️ 或跳出 PickerView */
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == nameTextField {
